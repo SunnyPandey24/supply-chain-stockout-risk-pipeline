@@ -1,3 +1,5 @@
+[_mockup_table.html](https://github.com/user-attachments/files/29383316/_mockup_table.html)
+[_mockup_overview.html](https://github.com/user-attachments/files/29383315/_mockup_overview.html)
 # Supply Chain & Stockout Risk Intelligence Platform
 
 **An end-to-end analytics pipeline — SQL → Python/ML → Power BI — built on a simulated multi-warehouse retail supply chain (40 SKUs, 4 warehouses, 10 suppliers, 1 year of daily data).**

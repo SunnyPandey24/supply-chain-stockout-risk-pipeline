@@ -1,5 +1,3 @@
-<img width="1535" height="847" alt="Screenshot 2026-06-26 192747" src="https://github.com/user-attachments/assets/ebaab1f0-467d-4c26-a2cb-9cab686a670a" />
-<img width="1526" height="687" alt="Screenshot 2026-06-26 192725" src="https://github.com/user-attachments/assets/f320d154-da6a-46ca-8156-5428388ea03c" />
 # Supply Chain & Stockout Risk Intelligence Platform
 
 **An end-to-end analytics pipeline — SQL → Python/ML → Power BI — built on a simulated multi-warehouse retail supply chain (40 SKUs, 4 warehouses, 10 suppliers, 1 year of daily data).**
@@ -96,3 +94,5 @@ Most portfolio projects stop at "I made a dashboard from a Kaggle CSV" or "I tra
 ## Honest limitations (worth saying out loud in an interview)
 - Data is synthetic — the patterns are real and internally consistent, but it's not a live production system with the messiness real data has (missing values, schema drift, duplicate records).
 - The model is intentionally simple (logistic regression / random forest on engineered features) — the natural next step toward the AI/data-engineer direction is wrapping this in an orchestrated pipeline (Airflow/Prefect) that re-runs weekly and retrains on a rolling window, plus comparing against a time-series-specific model (e.g. Prophet) for the demand side specifically.
+<img width="1535" height="847" alt="Screenshot 2026-06-26 192747" src="https://github.com/user-attachments/assets/ebaab1f0-467d-4c26-a2cb-9cab686a670a" />
+<img width="1526" height="687" alt="Screenshot 2026-06-26 192725" src="https://github.com/user-attachments/assets/f320d154-da6a-46ca-8156-5428388ea03c" />

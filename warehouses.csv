@@ -1,0 +1,5 @@
+warehouse_id,warehouse_name,region
+1,DC-North,North
+2,DC-South,South
+3,DC-East,East
+4,DC-West,West

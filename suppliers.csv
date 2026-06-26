@@ -1,0 +1,11 @@
+supplier_id,supplier_name,region,base_lead_time_days,reliability_score
+1,"Doyle, Watkins and Patel",West,19,0.86
+2,"Williams, Warren and Price",South,10,0.94
+3,"Roach, Ruiz and Woods",West,10,0.77
+4,"Johnson, Gaines and Perez",East,9,0.77
+5,"Robinson, Lamb and Wallace",North,17,0.98
+6,Smith Group,South,5,0.95
+7,Dunn-Coleman,North,6,0.76
+8,"Morales, Hendrix and Robertson",South,5,0.94
+9,Decker-Jones,East,19,0.89
+10,Stewart-Lewis,South,21,0.81

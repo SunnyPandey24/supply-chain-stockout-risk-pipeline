@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F3F2F1;
+    margin: 0;
+    padding: 24px;
+    width: 1240px;
+  }
+  .page-title { font-size: 24px; font-weight: 700; color: #1F2A44; margin: 0 0 2px 0; }
+  .page-subtitle { font-size: 13px; color: #6B7280; margin: 0 0 18px 0; }
+  .row { display: flex; gap: 16px; margin-bottom: 16px; }
+  .card {
+    background: white; border-radius: 6px; padding: 16px 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12); flex: 1;
+  }
+  .kpi-label { font-size: 12px; color: #6B7280; font-weight: 600; text-transform: uppercase; letter-spacing: .03em;}
+  .kpi-value { font-size: 32px; font-weight: 700; color: #1F2A44; margin-top: 6px; }
+  .kpi-value.red { color: #D9534F; }
+  .panel-title { font-size: 14px; font-weight: 700; color: #1F2A44; margin: 0 0 14px 0; }
+  .chart-card { background: white; border-radius: 6px; padding: 18px 22px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); flex: 1; }
+
+  /* donut */
+  .donut-wrap { display: flex; align-items: center; gap: 24px; }
+  .donut {
+    width: 150px; height: 150px; border-radius: 50%;
+    background: conic-gradient(#D9534F 0deg 207deg, #F0AD4E 207deg 259deg, #5CB85C 259deg 360deg);
+    position: relative;
+  }
+  .donut::after {
+    content: ""; position: absolute; top: 22px; left: 22px; width: 106px; height: 106px;
+    background: white; border-radius: 50%;
+  }
+  .donut-center { position: absolute; top: 0; left: 0; width: 150px; height: 150px;
+    display: flex; align-items: center; justify-content: center; flex-direction: column; }
+  .donut-center .n { font-size: 22px; font-weight: 700; color: #1F2A44; }
+  .donut-center .l { font-size: 10px; color: #6B7280; }
+  .legend { font-size: 13px; }
+  .legend-row { display: flex; align-items: center; margin-bottom: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+
+  /* bar chart */
+  .bar-row { display: flex; align-items: center; margin-bottom: 12px; }
+  .bar-label { width: 90px; font-size: 12px; color: #374151; }
+  .bar-track { flex: 1; background: #EEF1F4; border-radius: 3px; height: 16px; position: relative; }
+  .bar-fill { height: 16px; border-radius: 3px; }
+  .bar-val { width: 50px; text-align: right; font-size: 12px; color: #374151; font-weight: 600; }
+  .ref-line { position: absolute; top: -4px; bottom: -4px; width: 2px; background: #1F2A44; }
+</style>
+</head>
+<body>
+  <div class="page-title">Stockout Risk Intelligence — Weekly Replenishment Review</div>
+  <div class="page-subtitle">Updated from latest inventory snapshot (2023-12-31) · High-risk SKUs need a PO decision this week</div>
+
+  <div class="row">
+    <div class="card">
+      <div class="kpi-label">Total SKU-Warehouse Pairs</div>
+      <div class="kpi-value">160</div>
+    </div>
+    <div class="card">
+      <div class="kpi-label">High Risk Count</div>
+      <div class="kpi-value red">92</div>
+    </div>
+    <div class="card">
+      <div class="kpi-label">High Risk %</div>
+      <div class="kpi-value red">57.5%</div>
+    </div>
+    <div class="card">
+      <div class="kpi-label">Estimated Exposure ($)</div>
+      <div class="kpi-value red">$2.14M</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="chart-card" style="flex: 1.1;">
+      <div class="panel-title">Risk Tier Distribution</div>
+      <div class="donut-wrap">
+        <div style="position:relative;">
+          <div class="donut"></div>
+          <div class="donut-center"><div class="n">160</div><div class="l">SKU pairs</div></div>
+        </div>
+        <div class="legend">
+          <div class="legend-row"><div class="dot" style="background:#D9534F;"></div>High &nbsp;92 (57.5%)</div>
+          <div class="legend-row"><div class="dot" style="background:#F0AD4E;"></div>Medium &nbsp;23 (14.4%)</div>
+          <div class="legend-row"><div class="dot" style="background:#5CB85C;"></div>Low &nbsp;45 (28.1%)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-card" style="flex: 1.6;">
+      <div class="panel-title">Avg Days of Supply by Category (vs. avg lead time, dashed line)</div>
+      <div class="bar-row"><div class="bar-label">Electronics</div><div class="bar-track"><div class="bar-fill" style="width:5%; background:#D9534F;"></div><div class="ref-line" style="left:12%; background:#9CA3AF;"></div></div><div class="bar-val">4.2d</div></div>
+      <div class="bar-row"><div class="bar-label">Toys</div><div class="bar-track"><div class="bar-fill" style="width:6%; background:#D9534F;"></div><div class="ref-line" style="left:14%; background:#9CA3AF;"></div></div><div class="bar-val">5.3d</div></div>
+      <div class="bar-row"><div class="bar-label">Grocery</div><div class="bar-track"><div class="bar-fill" style="width:9%; background:#F0AD4E;"></div><div class="ref-line" style="left:10%; background:#9CA3AF;"></div></div><div class="bar-val">7.9d</div></div>
+      <div class="bar-row"><div class="bar-label">Apparel</div><div class="bar-track"><div class="bar-fill" style="width:10%; background:#F0AD4E;"></div><div class="ref-line" style="left:14%; background:#9CA3AF;"></div></div><div class="bar-val">8.9d</div></div>
+      <div class="bar-row"><div class="bar-label">Home Goods</div><div class="bar-track"><div class="bar-fill" style="width:15%; background:#5CB85C;"></div><div class="ref-line" style="left:18%; background:#9CA3AF;"></div></div><div class="bar-val">13.4d</div></div>
+      <div class="bar-row"><div class="bar-label">Garden</div><div class="bar-track"><div class="bar-fill" style="width:92%; background:#5CB85C;"></div><div class="ref-line" style="left:16%; background:#9CA3AF;"></div></div><div class="bar-val">83.1d</div></div>
+    </div>
+  </div>
+
+  <div class="chart-card">
+    <div class="panel-title">Filters</div>
+    <div style="display:flex; gap: 30px; font-size: 13px; color:#374151;">
+      <div><b>Category:</b> All ▾</div>
+      <div><b>Warehouse:</b> All ▾</div>
+      <div><b>Risk Tier:</b> High ▾ (default)</div>
+    </div>
+  </div>
+</body>
+</html>

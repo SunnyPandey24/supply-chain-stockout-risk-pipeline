@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F3F2F1;
+    margin: 0;
+    padding: 24px;
+    width: 1240px;
+  }
+  .page-title { font-size: 24px; font-weight: 700; color: #1F2A44; margin: 0 0 2px 0; }
+  .page-subtitle { font-size: 13px; color: #6B7280; margin: 0 0 18px 0; }
+  .panel { background: white; border-radius: 6px; padding: 18px 22px; box-shadow: 0 1px 3px rgba(0,0,0,0.12); }
+  .panel-title { font-size: 14px; font-weight: 700; color: #1F2A44; margin: 0 0 4px 0; }
+  .panel-sub { font-size: 12px; color: #6B7280; margin-bottom: 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; padding: 9px 10px; background: #1F4E78; color: white; font-weight: 600; font-size: 12px; }
+  td { padding: 8px 10px; border-bottom: 1px solid #EEF1F4; color: #1F2A44; }
+  tr:hover td { background: #FAFAFA; }
+  .pill { display: inline-block; padding: 3px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; color: white; }
+  .pill.high { background: #D9534F; }
+  .pill.medium { background: #F0AD4E; }
+  .pill.low { background: #5CB85C; }
+  .num { text-align: right; }
+  .row-high { background: #FDEEEE; }
+  .legend { display:flex; gap: 18px; font-size: 12px; color:#6B7280; margin-top: 12px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; display:inline-block; margin-right:5px; }
+</style>
+</head>
+<body>
+  <div class="page-title">Stockout Risk Watchlist</div>
+  <div class="page-subtitle">Filtered to Risk Tier = High · sorted by stockout_risk_score descending</div>
+
+  <div class="panel">
+    <div class="panel-title">Action Table — SKUs Needing a Decision This Week</div>
+    <div class="panel-sub">Rule-based + ML risk score, computed from current stock, sales velocity, and supplier lead time.</div>
+    <table>
+      <tr>
+        <th>SKU</th><th>Product</th><th>Warehouse</th><th>Category</th>
+        <th class="num">Days of Supply</th><th class="num">Lead Time (d)</th>
+        <th class="num">Risk Score</th><th>Risk Tier</th><th>Recommended Action</th>
+      </tr>
+      <tr class="row-high"><td>SKU0006</td><td>Since Electronics</td><td>3</td><td>Electronics</td><td class="num">0.0</td><td class="num">6</td><td class="num">0.999</td><td><span class="pill high">High</span></td><td>Place PO this week</td></tr>
+      <tr class="row-high"><td>SKU0004</td><td>Full Toys</td><td>4</td><td>Toys</td><td class="num">0.0</td><td class="num">10</td><td class="num">0.998</td><td><span class="pill high">High</span></td><td>Place PO this week</td></tr>
+      <tr class="row-high"><td>SKU0005</td><td>Behind Toys</td><td>2</td><td>Toys</td><td class="num">0.0</td><td class="num">6</td><td class="num">0.993</td><td><span class="pill high">High</span></td><td>Place PO this week</td></tr>
+      <tr class="row-high"><td>SKU0006</td><td>Since Electronics</td><td>1</td><td>Electronics</td><td class="num">0.0</td><td class="num">6</td><td class="num">0.993</td><td><span class="pill high">High</span></td><td>Place PO this week</td></tr>
+      <tr class="row-high"><td>SKU0028</td><td>Moment Toys</td><td>3</td><td>Toys</td><td class="num">2.7</td><td class="num">21</td><td class="num">0.993</td><td><span class="pill high">High</span></td><td>Place PO this week</td></tr>
+      <tr class="row-high"><td>SKU0037</td><td>Later Toys</td><td>2</td><td>Toys</td><td class="num">0.9</td><td class="num">9</td><td class="num">0.993</td><td><span class="pill high">High</span></td><td>Place PO this week</td></tr>
+      <tr class="row-high"><td>SKU0009</td><td>Spend Grocery</td><td>3</td><td>Grocery</td><td class="num">1.5</td><td class="num">6</td><td class="num">0.991</td><td><span class="pill high">High</span></td><td>Place PO this week</td></tr>
+      <tr class="row-high"><td>SKU0005</td><td>Behind Toys</td><td>4</td><td>Toys</td><td class="num">0.0</td><td class="num">6</td><td class="num">0.985</td><td><span class="pill high">High</span></td><td>Place PO this week</td></tr>
+      <tr><td>SKU0013</td><td>Choice Apparel</td><td>1</td><td>Apparel</td><td class="num">3.1</td><td class="num">14</td><td class="num">0.870</td><td><span class="pill medium">Medium</span></td><td>Monitor / review in 7 days</td></tr>
+      <tr><td>SKU0031</td><td>Reach HomeGoods</td><td>2</td><td>HomeGoods</td><td class="num">11.2</td><td class="num">12</td><td class="num">0.412</td><td><span class="pill medium">Medium</span></td><td>Monitor / review in 7 days</td></tr>
+      <tr><td>SKU0019</td><td>Visit Garden</td><td>3</td><td>Garden</td><td class="num">96.4</td><td class="num">11</td><td class="num">0.041</td><td><span class="pill low">Low</span></td><td>No action needed</td></tr>
+    </table>
+    <div class="legend">
+      <div><span class="dot" style="background:#D9534F;"></span>High — place PO this week</div>
+      <div><span class="dot" style="background:#F0AD4E;"></span>Medium — monitor</div>
+      <div><span class="dot" style="background:#5CB85C;"></span>Low — no action</div>
+    </div>
+  </div>
+</body>
+</html>

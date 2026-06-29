@@ -2,6 +2,11 @@
 
 **An end-to-end analytics pipeline — SQL → Python/ML → Power BI — built on a simulated multi-warehouse retail supply chain (40 SKUs, 4 warehouses, 10 suppliers, 1 year of daily data).**
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-2ea44f?style=for-the-badge&logo=streamlit)](https://supply-chain-stockout-risk-pipeline-dltjy46lynyop7mtydtaki.streamlit.app/)
+
+## 🚀 Live Demo
+👉 https://supply-chain-stockout-risk-pipeline-dltjy46lynyop7mtydtaki.streamlit.app/
+
 This isn't a single notebook or a single dashboard. It's a pipeline where each stage produces a real artifact that the next stage consumes — the same shape as a production analytics system, scaled down to something one person can build and explain end-to-end.
 
 > **Why this domain:** supply chain/inventory naturally needs *both* a predictive model (will this SKU stock out?) and a dashboard that drives a weekly decision (which SKUs need a PO?) — it's not a dashboard bolted onto a model for show, the model's output **is** the dashboard's main table.
